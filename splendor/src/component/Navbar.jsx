@@ -4,6 +4,7 @@ import { Moon, Sun } from 'lucide-react';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -13,15 +14,32 @@ const Navbar = () => {
     }
   }, [isDark]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleDarkMode = () => {
     setIsDark(!isDark);
   };
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 backdrop-blur-md px-6 py-4 flex items-center justify-between">
+      <header
+        className={`fixed top-0 w-full z-50 px-6 py-4 flex items-center justify-between transition-all duration-500 ${
+          scrolled
+            ? 'bg-gradient-to-b from-[#0a192fb3] to-[#0a192fe6] backdrop-blur-md'
+            : 'bg-transparent'
+        }`}
+      >
         <div className="flex flex-col items-center">
-          <h1 className="text-3xl font-bold text-yellow-400" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1
+            className="text-3xl font-bold text-yellow-400"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
             Austin
           </h1>
           <div className="w-2 h-2 rounded-full bg-yellow-400 mt-1" />
