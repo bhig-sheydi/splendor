@@ -1,0 +1,55 @@
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+.btn-fancy {
+  position: relative;
+  padding: 12px 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3);
+  animation: floaty 3s ease-in-out infinite;
+}
+
+.btn-fancy:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+}
+
+.particles {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 10px 10px;
+  animation: shimmer 10s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  
+  
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
