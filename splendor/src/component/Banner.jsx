@@ -23,8 +23,9 @@ const Banner = () => {
       return {
         x: canvas.width / 2 + Math.cos(angle) * spread,
         y: canvas.height / 2 + Math.sin(angle) * spread,
-        vx: (Math.random() - 0.5) * 2,
-        vy: (Math.random() - 0.5) * 2,
+        vx: (Math.random() - 0.5) * 0.6, 
+        vy: (Math.random() - 0.5) * 0.6,
+        
         r,
         baseColor: color,
         depth: Math.random() * 0.8 + 0.2,
@@ -58,6 +59,10 @@ const Banner = () => {
 
         ball.x += ball.vx;
         ball.y += ball.vy;
+
+
+        
+        
 
         if (ball.x - ball.r < 0 || ball.x + ball.r > canvas.width) ball.vx *= -1;
         if (ball.y - ball.r < 0 || ball.y + ball.r > canvas.height) ball.vy *= -1;
